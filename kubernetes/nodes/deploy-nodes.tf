@@ -18,7 +18,7 @@ resource "null_resource" "deploy-nodes" {
 
     provisioner "remote-exec" {
         inline = [
-            "kubeadm join --token ${var.kube_token} ${var.kube_master_ip}:6443"
+            "kubeadm join --token ${var.kube_token} --discovery-token-unsafe-skip-ca-verification ${var.kube_master_ip}:6443"
         ]
     }
 }
